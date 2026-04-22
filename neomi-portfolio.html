@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neomi Sanghavi — Social Media Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F2EA;
+    --ink: #2A2418;
+    --rose: #7A9E82;
+    --rose-light: #DDE8DF;
+    --gold: #B8864E;
+    --muted: #7A6F62;
+    --border: rgba(42,36,24,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--rose);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--rose);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), width 0.2s, height 0.2s;
+    opacity: 0.5;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+
+  /* Sections general */
+  section { padding: 7rem 4rem; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 9rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute;
+    top: 50%; right: -2rem;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(10rem, 18vw, 22rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(122,158,130,0.1);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--rose);
+    border: 1px solid var(--rose);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2rem;
+    margin-bottom: 1.75rem;
+    animation: fadeUp 0.8s 0.2s both;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.35s both;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--rose);
+  }
+  .hero-tagline {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.5s both;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    animation: fadeUp 0.8s 0.65s both;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
+  .btn-outline {
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border: 1.5px solid var(--ink);
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
+  .hero-photo {
+    position: absolute;
+    right: 4rem;
+    bottom: 0;
+    width: 340px;
+    height: 460px;
+    background: var(--rose-light);
+    border-radius: 200px 200px 0 0;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: fadeUp 0.9s 0.4s both;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .hero-photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--rose);
+  }
+  .hero-photo-placeholder span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 1rem;
+    color: var(--muted);
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: fadeUp 1s 1s both;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: var(--muted);
+    animation: expandLine 1.5s 1.2s both;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  .about-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--rose);
+    margin-bottom: 1.25rem;
+  }
+  .about-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .about-body {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  /* REPLACE the text below with your own About Me — AI can help you write this! */
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .stat-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--rose);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-img-box {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--rose-light);
+    border-radius: 160px 160px 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-box img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+  .about-tag-float {
+    position: absolute;
+    bottom: -1rem;
+    right: -1.5rem;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.9rem 1.25rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience {
+    border-top: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+  }
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .section-heading span { color: var(--rose); font-style: italic; }
+
+  /* Quark internship block */
+  .internship-block {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .internship-block::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: var(--rose);
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+  .internship-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .internship-logo {
+    width: 56px; height: 56px;
+    background: rgba(245,240,232,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: rgba(245,240,232,0.5);
+    text-align: center;
+    padding: 0.4rem;
+    border: 1px dashed rgba(245,240,232,0.2);
+    /* REPLACE: add Quark Marketing logo here */
+  }
+  .internship-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .internship-info p { font-size: 0.82rem; opacity: 0.6; }
+  .accounts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .account-card {
+    background: rgba(245,240,232,0.06);
+    border: 1px solid rgba(245,240,232,0.12);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .account-card:hover { background: rgba(245,240,232,0.1); }
+  .account-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .account-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--cream);
+  }
+  .account-industry {
+    font-size: 0.68rem;
+    background: rgba(122,158,130,0.2);
+    color: #C5D9C8;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .account-desc {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .dashboard-placeholder {
+    background: rgba(245,240,232,0.04);
+    border: 1px dashed rgba(245,240,232,0.15);
+    border-radius: 8px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: rgba(245,240,232,0.3);
+    text-align: center;
+    padding: 0.5rem;
+    /* REPLACE: paste your <img src="dashboard-screenshot.jpg"> here */
+  }
+  .account-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(212,168,83,0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .account-link:hover { border-color: var(--gold); }
+
+  /* Family accounts */
+  .family-section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin: 2.5rem 0 1.25rem;
+  }
+  .family-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .family-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: white;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .family-card:hover { border-color: var(--rose); transform: translateY(-2px); }
+  .family-logo {
+    width: 52px; height: 52px;
+    border-radius: 10px;
+    background: var(--rose-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 0.4rem;
+    flex-shrink: 0;
+    border: 1px dashed rgba(122,158,130,0.3);
+    /* REPLACE: add family brand logo here */
+  }
+  .family-info h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.2rem; }
+  .family-info p { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── SKILLS ── */
+  #skills {
+    border-top: 1px solid var(--border);
+    background: var(--ink);
+    color: var(--cream);
+  }
+  #skills .section-heading { color: var(--cream); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .skill-group h4 {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .skill-pill {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border: 1px solid rgba(245,240,232,0.15);
+    border-radius: 2rem;
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.75);
+    margin: 0 0.4rem 0.6rem 0;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill-pill:hover { border-color: var(--rose); color: var(--cream); }
+
+  /* ── CONTENT SAMPLES ── */
+  #content {
+    border-top: 1px solid var(--border);
+  }
+  .samples-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .sample-card {
+    aspect-ratio: 1;
+    background: var(--rose-light);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .sample-card:hover { transform: scale(1.02); }
+  .sample-card img { width: 100%; height: 100%; object-fit: cover; }
+  .sample-overlay {
+    position: absolute; inset: 0;
+    background: rgba(26,20,16,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .sample-card:hover .sample-overlay { background: rgba(26,20,16,0.45); }
+  .sample-label {
+    font-size: 0.75rem;
+    color: var(--cream);
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .sample-card:hover .sample-label { opacity: 1; }
+  .sample-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  /* ── EDUCATION ── */
+  #education {
+    border-top: 1px solid var(--border);
+    background: var(--rose-light);
+  }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .edu-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.75rem;
+    border: 1px solid rgba(122,158,130,0.12);
+  }
+  .edu-card-type {
+    font-size: 0.68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rose);
+    margin-bottom: 0.75rem;
+  }
+  .edu-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .edu-card p { font-size: 0.85rem; color: var(--muted); }
+  .edu-year {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    background: var(--rose-light);
+    color: var(--rose);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .contact-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 1.5rem 0 2rem;
+  }
+  .contact-heading em { color: var(--rose); font-style: italic; }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: 1.5px solid var(--border);
+    border-radius: 2rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-2px); }
+
+  /* Footer */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandLine {
+    from { width: 0; opacity: 0; }
+    to { width: 40px; opacity: 1; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    section { padding: 5rem 1.5rem; }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-photo { display: none; }
+    .accounts-grid { grid-template-columns: 1fr; }
+    .family-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .samples-grid { grid-template-columns: repeat(2, 1fr); }
+    .edu-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">NS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Work</a></li>
+    <li><a href="#content">Content</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">NEOMI</div>
+  <div class="hero-tag">Open to opportunities</div>
+  <h1 class="hero-name">Neomi<br><em>Sanghavi</em></h1>
+  <p class="hero-tagline">Building brands through thoughtful social strategy</p>
+  <div class="hero-actions">
+    <a href="#experience" class="btn-primary">See my work</a>
+    <a href="#contact" class="btn-outline">Let's connect</a>
+  </div>
+  <div class="hero-photo">
+    <div class="hero-photo">
+  <img src="picofme.png" alt="Neomi Sanghavi" style="width:100%; height:100%; object-fit:cover; object-position:83% top;">
+</div>
+  </div>
+  <div class="hero-scroll">
+    <span class="scroll-line"></span>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p class="about-label">About Me</p>
+    <h2 class="about-heading">Storyteller.<br>Strategist.<br>Always curious.</h2>
+    <p class="about-body">
+      <!-- REPLACE this paragraph with your own About Me. AI tip: ask Claude "write my About Me — I'm Neomi, a fresher social media marketer from Mumbai, I interned at Quark Marketing, handled 6 accounts across hospitality, jewellery, optics and wellness, and I want to eventually grow into brand strategy." -->
+      I'm Neomi Sanghavi, a Mumbai-based social media marketer with hands-on experience managing real client accounts across diverse industries. From jewellery brands to salons, I've learned that great content is equal parts strategy and instinct.
+    </p>
+    <p class="about-body">
+      I'm passionate about building brands that people actually connect with — and I'm growing towards brand strategy, where storytelling meets long-term thinking.
+    </p>
+    </div>
+<div class="reveal">
+    <div class="about-stats">
+      <div class="stat-card">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Accounts managed</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Months at agency</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Industries covered</span>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+    <div class="about-tag-float">
+      Social Media<br>+ Brand Strategy
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <h2 class="section-heading">My <span>Work</span></h2>
+  </div>
+
+  <!-- Quark Internship -->
+  <div class="internship-block reveal">
+    <div class="internship-meta">
+      <div class="internship-logo">
+        <img src="Quark Marketing Logo.jpg" style="width:175%; height:175%; object-fit:contain;border-radius:10px; padding:4px;">
+      </div>
+      <div class="internship-info">
+        <h3>Quark Marketing</h3>
+        <p>Social Media Marketing Intern &nbsp;·&nbsp; 3 months &nbsp;·&nbsp; Mumbai</p>
+      </div>
+    </div>
+    <p style="font-size:0.85rem; color:rgba(245,240,232,0.6); max-width:600px; line-height:1.7;">
+      Managed end-to-end social media for 4 client accounts spanning jewellery, optics, food & beverage, and wellness — including content planning, design coordination, and performance tracking.
+    </p>
+
+    <div class="accounts-grid">
+
+      <!-- Account 1: Mahavir Jewellers -->
+      <div class="account-card">
+        <div class="account-card-top">
+          <span class="account-name">Mahavir Jewellers</span>
+          <span class="account-industry">Jewellery</span>
+        </div>
+        <p class="account-desc">Managed Instagram & Facebook presence. Focused on festive content calendars, product showcases, and engagement growth.</p>
+        <div class="dashboard-placeholder" style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">2.8M</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Views</span>
+    </div>
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">1.1K</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Interactions</span>
+  </div>
+</div>
+        <a href="https://www.instagram.com/mahavirjewellerskalyan" target="_blank" class="account-link">→ View Instagram</a>
+      </div>
+
+      <!-- Account 2: Pattani Opticians -->
+      <div class="account-card">
+        <div class="account-card-top">
+          <span class="account-name">Pattani Opticians</span>
+          <span class="account-industry">Eyewear</span>
+        </div>
+        <p class="account-desc">Built brand awareness through educational and lifestyle content. Grew page engagement across Instagram.</p>
+        <div class="dashboard-placeholder">
+          <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">10.8M</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Views</span>
+    </div>
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">1.7K</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Interactions</span>
+  </div>
+</div>
+       <a href="https://www.instagram.com/pattaniopticians?igsh=ZWR0eGQwamYxNWo4" target="_blank" class="account-link">→ View Instagram</a>
+      </div>
+
+      <!-- Account 3: Pastor and Co. -->
+      <div class="account-card">
+        <div class="account-card-top">
+          <span class="account-name">Pastor and Co.</span>
+          <span class="account-industry">F&B</span>
+        </div>
+        <p class="account-desc">Handled social content strategy for a food & beverage brand — reels, stories, and campaign coordination.</p>
+        <div class="dashboard-placeholder" style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">4.8M</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Views</span>
+  </div>
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">3.8K</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Interactions</span>
+  </div>
+</div>
+        <a href="https://www.instagram.com/pastor.and.co" target="_blank" class="account-link">→ View Instagram</a> 
+      </div>
+
+      <!-- Account 4: G Salon Mumbai -->
+      <div class="account-card">
+        <div class="account-card-top">
+          <span class="account-name">G Salon Mumbai</span>
+          <span class="account-industry">Beauty & Wellness</span>
+        </div>
+        <p class="account-desc">Managed social channels for a premium Mumbai salon. Content focused on transformations, offers, and brand aesthetic.</p>
+        <div class="dashboard-placeholder" style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">9.6M</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Views</span>
+  </div>
+  <div style="text-align:center;">
+    <span style="font-size:1.6rem; font-weight:700; color:#F7F2EA; display:block;">16.7K</span>
+    <span style="font-size:0.72rem; color:rgba(247,242,234,0.5); text-transform:uppercase; letter-spacing:0.08em;">Interactions</span>
+  </div>
+</div>
+        <a href="https://www.instagram.com/gsalonmumbai/" target="_blank" class="account-link">→ View Instagram</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Family Accounts -->
+  <p class="family-section-label reveal">Also worked with</p>
+  <div class="family-grid reveal">
+
+    <div class="family-card">
+      <div class="family-logo">
+        <img src="GAC logo.jpg" style="width:200%;border-radius:6px"> 
+        
+      </div>
+      <div class="family-info">
+        <h4>Giggles Activity Centre</h4>
+        <p>Children's activity brand · Social media presence</p>
+      </div>
+    </div>
+
+    <div class="family-card">
+      <div class="family-logo">
+         <img src=" VDK F Logo.jpg" style="width:200%;border-radius:6px"> 
+        
+      </div>
+      <div class="family-info">
+        <h4>VDK Finserve</h4>
+        <p>Financial services brand · Social media presence</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <h2 class="section-heading">Skills &amp; <span style="color:var(--gold);font-style:italic;">Tools</span></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <h4>Platforms</h4>
+      <span class="skill-pill">Instagram</span>
+      <span class="skill-pill">Facebook</span>
+      <span class="skill-pill">LinkedIn</span>
+      <span class="skill-pill">Reels & Stories</span>
+      <span class="skill-pill">Pinterest</span>
+      <span class="skill-pill">Inlfuencer Collaborations</span>
+    </div>
+    <div class="skill-group reveal">
+      <h4>Tools</h4>
+      <span class="skill-pill">Canva</span>
+      <span class="skill-pill">Meta Business Suite</span>
+      <span class="skill-pill">Instagram Insights</span>
+      <span class="skill-pill">Chat GPT </span>
+      <span class="skill-pill">Claude</span>
+      <span class="skill-pill">Google Trends</span>
+      <span class="skill-pill">Google Analytics</span>
+    </div>
+    <div class="skill-group reveal">
+      <h4>Strengths</h4>
+      <span class="skill-pill">Content Strategy</span>
+      <span class="skill-pill">Brand Voice</span>
+      <span class="skill-pill">Content Calendars</span>
+      <span class="skill-pill">Community Management</span>
+      <span class="skill-pill">Brand Strategy (learning)</span>
+      <span class="skill-pill">Trend Forecasting</span>
+      <span class="skill-pill">Performance Analysis (learning)</span>
+      <span class="skill-pill"> Consumer Research </span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT SAMPLES -->
+<section id="content">
+  <div class="section-header reveal">
+    <h2 class="section-heading">Content <span>Samples</span></h2>
+    <p style="font-size:0.85rem;color:var(--muted);max-width:280px;text-align:right;">My best posts, creatives &amp; campaigns</p>
+  </div>
+  <div class="samples-grid">
+  <div class="sample-card reveal" style="overflow:hidden;">
+    <img src="PAT W.png" alt="Pattani Opticians" style="width:100%;height:100%;object-fit:cover;">
+    <div class="sample-overlay"><span class="sample-label">Pattani Opticians</span></div>
+  </div>
+  <div class="sample-card reveal" style="overflow:hidden;">
+    <img src="PAC P.png" alt="Pastor and Co." style="width:100%;height:100%;object-fit:cover;">
+    <div class="sample-overlay"><span class="sample-label">Pastor and Co.</span></div>
+  </div>
+  <div class="sample-card reveal" style="overflow:hidden;">
+    <img src="GSA P.png" alt="G Salon" style="width:100%;height:100%;object-fit:cover;">
+    <div class="sample-overlay"><span class="sample-label">G Salon Mumbai</span></div>
+  </div>
+  <div class="sample-card reveal" style="overflow:hidden;">
+    <img src="MJ P.png" alt="Mahavir Jewellers" style="width:100%;height:100%;object-fit:cover;">
+    <div class="sample-overlay"><span class="sample-label">Mahavir Jewellers</span></div>
+  </div>
+  <div class="sample-card reveal" style="overflow:hidden;">
+    <img src="PAT P.png" alt="Giggles" style="width:100%;height:100%;object-fit:cover;">
+    <div class="sample-overlay"><span class="sample-label">Pattani Opticians</span></div>
+  </div>
+  <div class="sample-card reveal" style="overflow:hidden;">
+    <img src="PAS P.png" alt="VDK Finserve" style="width:100%;height:100%;object-fit:cover;">
+    <div class="sample-overlay"><span class="sample-label">VDK Finserve</span></div>
+  </div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <p class="about-label">Education &amp; Certifications</p>
+    <h2 class="section-heading" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.02em;">Where I <em style="color:var(--rose);">learned</em></h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <p class="edu-card-type">Degree</p>
+      <h3>Bachelor of Management Studies</h3>
+      <!-- REPLACE: e.g. BMS in Marketing / BAF / BMM -->
+      <p>H.R. College of Commerce & Economics , Mumbai</p>
+      <span class="edu-year">2023 – 2026</span>
+    </div>
+    <div class="edu-card reveal">
+      <p class="edu-card-type">School</p>
+      <h3>Gopi Birla Memorial School</h3>
+      <p>CBSE Class 1-12</p>
+      <span class="edu-year">2010-2023</span>
+    </div>
+    <div class="edu-card reveal">
+      <p class="edu-card-type"> Extra Curricullar </p>
+      <h3>Vice - Chairperson, Mystique </h3>
+      <p>Official College Fest</p>
+      <span class="edu-year">2023-2026</span>
+    </div>
+    <div class="edu-card reveal">
+      <p class="edu-card-type">Internship</p>
+      <h3>Quark Marketing</h3>
+      <p>Social Media Marketing · Mumbai</p>
+      <span class="edu-year">3 months · 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="about-label reveal">Get in touch</p>
+  <h2 class="contact-heading reveal">Let's make<br>something <em>great.</em></h2>
+  <p class="reveal" style="color:var(--muted);font-size:0.95rem;max-width:420px;margin:0 auto;">Whether you're looking to hire, collaborate, or just chat marketing — I'd love to hear from you.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:your@email.com" class="contact-link">
+      ✉ neomi3@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/neomi-sanghavi/" target="_blank" class="contact-link">
+      <!-- REPLACE: update with your LinkedIn URL -->
+      in LinkedIn
+  
+    </a>
+    <a href="https://drive.google.com/file/d/1qjEX47rQAafBBN21tnudQscT3nsfM4H0/view?usp=sharing" download class="contact-link" style="background:var(--ink);color:var(--cream);border-color:var(--ink);">
+      ↓ Download Resume
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Neomi Sanghavi</span>
+  <span>Designed &amp; built with intention.</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+    ring.style.transform = `translate(${mx - 18}px, ${my - 18}px)`;
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
